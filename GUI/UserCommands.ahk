@@ -12,7 +12,7 @@
 ;-------------------------------------------------------------------------------
 if Pedersen = g%A_Space% ; Search Google
 {
-    gui_search_title = LMGTFY
+    gui_search_title = Google Search
     gui_search("https://www.google.com/search?num=50&safe=off&site=&source=hp&q=REPLACEME&btnG=Search&oq=&gs_l=")
 }
 else if Pedersen = a%A_Space% ; Search Google for AutoHotkey related stuff
@@ -27,10 +27,10 @@ else if Pedersen = l%A_Space% ; Search Google with ImFeelingLucky
 }
 else if Pedersen = m%A_Space% ; Open more than one URL
 {
-    gui_search_title = multiple
+    gui_search_title = Search multiple listed websites
     gui_search("https://www.google.com/search?&q=REPLACEME")
-    gui_search("https://www.bing.com/search?q=REPLACEME")
-    gui_search("https://duckduckgo.com/?q=REPLACEME")
+    gui_search("https://www.amazon.com/s?k=REPACEME&redirectFromSmile=1")
+    gui_search("https://www.youtube.com/results?search_query=REPLACEME")
 }
 else if Pedersen = x%A_Space% ; Search Google as Incognito
 ;   A note on how this works:
@@ -63,10 +63,15 @@ else if Pedersen = t%A_Space% ; Search torrent networks
     gui_search_title = Sharing is caring
     gui_search("https://kickass.to/usearch/REPLACEME")
 }
-else if Pedersen = kor ; Translate English to Korean
+else if Pedersen = spa ; Translate English to Spanish
 {
-    gui_search_title = English to Korean
-    gui_search("https://translate.google.com/#en/ko/REPLACEME")
+    gui_search_title = English to Spanish
+    gui_search("https://translate.google.com/#en/es/REPLACEME")
+}
+else if Pedersen = eng ; Translate Spanish to English
+{
+    gui_search_title = Spanish to English
+    gui_search("https://translate.google.com/#en/es/REPLACEME")
 }
 
 
@@ -98,20 +103,15 @@ else if Pedersen = note ; Notepad
     gui_destroy()
     Run Notepad
 }
-else if Pedersen = paint ; MS Paint
-{
-    gui_destroy()
-    run "C:\Windows\system32\mspaint.exe"
-}
 else if Pedersen = maps ; Google Maps focused on the Technical University of Denmark, DTU
 {
     gui_destroy()
-    run "https://www.google.com/maps/@55.7833964`,12.5244754`,12z"
+    run "https://www.google.com/maps/@42.0902685`,-v88.353051`,12z"
 }
 else if Pedersen = inbox ; Open google inbox
 {
     gui_destroy()
-    run https://inbox.google.com/u/0/
+    run https://inbox.google.com/u/0/v
     ; run https://mail.google.com/mail/u/0/#inbox  ; Maybe you prefer the old gmail
 }
 else if Pedersen = mes ; Opens Facebook unread messages
@@ -142,7 +142,9 @@ else if Pedersen = dir ; Open the directory for this script
 else if Pedersen = host ; Edit host script
 {
     gui_destroy()
-    run, notepad.exe "%A_ScriptFullPath%"
+    codeLocation := "C:\Users\" A_UserName "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\Visual Studio Code.lnk"
+    run, codeLocation "%A_ScriptFullPath%"
+    
 }
 else if Pedersen = user ; Edit GUI user commands
 {
@@ -157,12 +159,12 @@ else if Pedersen = user ; Edit GUI user commands
 else if Pedersen = @ ; Email address
 {
     gui_destroy()
-    Send, my_email_address@gmail.com
+    Send, Anthony.ae@outlook.com
 }
 else if Pedersen = name ; My name
 {
     gui_destroy()
-    Send, My Full Name
+    Send, Anthony Alvarez
 }
 else if Pedersen = phone ; My phone number
 {
