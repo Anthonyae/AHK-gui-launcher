@@ -124,6 +124,11 @@ else if Pedersen = url ; Open an URL from the clipboard (naive - will try to run
     gui_destroy()
     run %ClipBoard%
 }
+else if Pedersen = chat ; Opens Facebook unread messages
+{
+    gui_destroy()
+    run https://chat.openai.com/
+}
 
 
 ;-------------------------------------------------------------------------------
