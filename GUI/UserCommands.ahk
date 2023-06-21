@@ -29,7 +29,7 @@ else if Pedersen = m%A_Space% ; Open more than one URL
 {
     gui_search_title = Search multiple listed websites
     gui_search("https://www.google.com/search?&q=REPLACEME")
-    gui_search("https://www.amazon.com/s?k=REPACEME&redirectFromSmile=1")
+    gui_search("https://www.amazon.com/s?k=REPLACEME&redirectFromSmile=1")
     gui_search("https://www.youtube.com/results?search_query=REPLACEME")
 }
 else if Pedersen = x%A_Space% ; Search Google as Incognito
