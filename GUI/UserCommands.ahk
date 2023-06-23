@@ -6,6 +6,14 @@
 ; Some editors however save without BOM, and then special characters look messed up in the AHK GUI.
 
 ; Write your own AHK commands in this file to be recognized by the GUI. Take inspiration from the samples provided here.
+; List of categories
+; SEARCH GOOGLE
+; SEARCH OTHER THINGS
+; LAUNCH WEBSITES AND PROGRAMS
+; INTERACT WITH THIS AHK SCRIPT
+; TYPE RAW TEXT
+; OPEN FOLDERS
+; MISCELLANEOUS
 
 ;-------------------------------------------------------------------------------
 ;;; SEARCH GOOGLE ;;;
@@ -124,12 +132,21 @@ else if Pedersen = url ; Open an URL from the clipboard (naive - will try to run
     gui_destroy()
     run %ClipBoard%
 }
-else if Pedersen = chat ; Opens Facebook unread messages
+else if Pedersen = chat ; Opens chatgpt
 {
     gui_destroy()
     run https://chat.openai.com/
 }
-
+else if Pedersen = todo ; opens to do list in checkvist
+{
+    gui_destroy()
+    run https://checkvist.com/checklists/876069#
+}
+else if Pedersen = mind ; opens to do list in checkvist
+{
+    gui_destroy()
+    run https://app.mindmup.com/files-gold.html
+}
 
 ;-------------------------------------------------------------------------------
 ;;; INTERACT WITH THIS AHK SCRIPT ;;;
@@ -147,8 +164,9 @@ else if Pedersen = dir ; Open the directory for this script
 else if Pedersen = host ; Edit host script
 {
     gui_destroy()
-    codeLocation := "C:\Users\" A_UserName "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\Visual Studio Code.lnk"
-    run, codeLocation "%A_ScriptFullPath%"
+    codeLocation := "C:\Users\" A_UserName "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\"
+    MsgBox, %codeLocation% "%A_ScriptFullPath%"
+    run, code "%A_ScriptFullPath%"
     
 }
 else if Pedersen = user ; Edit GUI user commands
@@ -156,6 +174,24 @@ else if Pedersen = user ; Edit GUI user commands
     gui_destroy()
     run, notepad.exe "%A_ScriptDir%\GUI\UserCommands.ahk"
 }
+else if Pedersen = test ; Edit GUI user commands
+{
+    gui_destroy()
+    
+    ; ; Example usage
+    ; tabs := GetChromeTabs() ; Call the function to get the list of tabs
+
+    ;     ; Loop through each tab and display the title and URL
+    ;     Loop, % tabs.Length()
+    ;     {
+    ;         tab := tabs[A_Index]
+    ;         MsgBox, Tab %A_Index% nURL: %tab%
+    ;                 }
+    ; return
+    
+
+}
+
 
 
 ;-------------------------------------------------------------------------------
@@ -210,6 +246,12 @@ else if Pedersen = rec ; Recycle Bin
 {
     gui_destroy()
     Run ::{645FF040-5081-101B-9F08-00AA002F954E}
+}
+else if Pedersen = rep ; Folder:Reporting projects
+{
+    gui_destroy()
+    ; run, "C:\Users\anthony\Dropbox (Happiest Baby`,` Inc)\Accounting\Reporting Projects"
+    run C:\Users\%A_Username%\Dropbox (Happiest Baby`,` Inc)\Accounting\Reporting Projects
 }
 
 
