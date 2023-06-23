@@ -49,7 +49,7 @@ else if Pedersen = x%A_Space% ; Search Google as Incognito
 ;   So what this does is that it runs chrome with the arguments "-incognito" and the google search URL where REPLACEME in the URL has been replaced by your input.
 {
     gui_search_title = Google Search as Incognito
-    gui_search("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe -incognito https://www.google.com/search?safe=off&q=REPLACEME")
+    gui_search("C:\Program Files\Google\Chrome\Application\chrome.exe -incognito https://www.google.com/search?safe=off&q=REPLACEME")
 }
 
 
