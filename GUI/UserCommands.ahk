@@ -319,7 +319,11 @@ else if Pedersen = rep ; Folder:Reporting projects
     ; run, "C:\Users\anthony\Dropbox (Happiest Baby`,` Inc)\Accounting\Reporting Projects"
     run C:\Users\%A_Username%\Dropbox (Happiest Baby`,` Inc)\Accounting\Reporting Projects
 }
-
+else if Pedersen = dec ; serial trace
+{
+    gui_destroy()
+    run C:\Users\%A_Username%\Dropbox (Happiest Baby`,` Inc)\FloQast\FQ - Happiest Baby Inc\2022\12 - December\05 Fixed Assets\seria trace - updated as of 202306
+}
 
 ;-------------------------------------------------------------------------------
 ;;; MISCELLANEOUS ;;;
@@ -356,4 +360,10 @@ else if Pedersen = ? ; Tooltip with list of commands
 {
     GuiControl,, Pedersen, ; Clear the input box
     Gosub, gui_commandlibrary
+}
+else if Pedersen = mouse ; Get mouse position
+{   
+    gui_destroy()
+    MouseGetPos, LocX, LocY
+    MsgBox, X is at %Loc% and Y is at %LocY
 }
