@@ -137,7 +137,7 @@ else if Pedersen = chat ; Opens chatgpt
     gui_destroy()
     run https://chat.openai.com/
 }
-else if Pedersen = todo ; opens to do list in checkvist
+else if Pedersen = check ; opens to do list in checkvist
 {
     gui_destroy()
     run https://checkvist.com/checklists/876069#
@@ -147,6 +147,27 @@ else if Pedersen = mind ; opens to do list in checkvist
     gui_destroy()
     run https://app.mindmup.com/files-gold.html
 }
+else if Pedersen = %A_Space%mind ; opens mindnump
+{
+    gui_destroy()
+    run https://www.mindmup.com/tutorials/keyboard.html
+}
+else if Pedersen = %A_Space%mind ; opens mindmup shortcuts
+{
+    gui_destroy()
+    run https://www.mindmup.com/tutorials/keyboard.html
+}
+else if Pedersen = todo ; opens to do list in ticktick
+{
+    gui_destroy()
+    run https://ticktick.com/webapp/#p/inbox/tasks
+}
+else if Pedersen = %A_Space%todo ; opens to do ticktick shortcuts
+{
+    gui_destroy()
+    run https://ticktick.com/webapp/#settings/shortcuts
+}
+
 
 ;-------------------------------------------------------------------------------
 ;;; INTERACT WITH THIS AHK SCRIPT ;;;
@@ -178,16 +199,61 @@ else if Pedersen = test ; Edit GUI user commands
 {
     gui_destroy()
     
-    ; ; Example usage
-    ; tabs := GetChromeTabs() ; Call the function to get the list of tabs
 
-    ;     ; Loop through each tab and display the title and URL
-    ;     Loop, % tabs.Length()
-    ;     {
-    ;         tab := tabs[A_Index]
-    ;         MsgBox, Tab %A_Index% nURL: %tab%
-    ;                 }
-    ; return
+    WinGet, chromeWindows, List, ahk_exe chrome.exe  ; Get a list of Chrome windows
+
+; Split the string of window handles into an array
+StringSplit, chromeWindowsArray, chromeWindows, %A_Space%
+
+if (chromeWindowsArray.MaxIndex() > 0) {
+    MsgBox, The first Chrome window handle is %chromeWindowsArray1%
+} else {
+    MsgBox, No Chrome windows found.
+}
+
+    tabList := ""  ; Variable to store the tab list
+    MsgBox, chromeWindows: %chromeWindows%
+    MsgBox, % chromeWindows[1]
+    MsgBox, chromeWindowsA_index: %chromeWindows%%A_Index%
+    MsgBox, chromeWindowsA_Index_again: chromeWindows%A_Index%
+    WinGet, tabCountTest, Count, % "ahk_id " 132862
+    MsgBox, test: %tabCountTest%
+    Loop, % chromeWindows
+    {
+        chromeWindow := chromeWindows%A_Index%  ; Get the handle of each Chrome window
+
+        ; Get the number of tabs in the current Chrome window
+        WinGet, tabCount, Count, % "ahk_id " chromeWindow
+        MsgBox, chromeWindow: %chromeWindow% 
+        MsgBox, tabCount: %tabCount%
+
+        ; Loop through each tab and retrieve the URL
+        Loop, % tabCount
+        {
+            ; Get the URL of the current tab
+            tabTitle := GetChromeTabTitle(chromeWindow, A_Index)
+
+            ; Append the tab URL to the list
+            tabList .= tabTitle "`n"
+        }
+    }
+
+    MsgBox, % "List of Chrome tabs:`n`n" tabList  ; Display the tab list in a message box
+
+    GetChromeTabTitle(windowHandle, tabIndex) {
+        controlName := "Chrome_RenderWidgetHostHWND1"
+        controlText := ""
+        control := "ahk_id " windowHandle
+
+        if DllCall("FindWindowEx", "Ptr", control, "Ptr", 0, "Str", controlName, "Ptr")
+            if DllCall("SendMessage", "Ptr", control, "UInt", 0x133, "Ptr", tabIndex-1, "Ptr", 0, "Ptr")
+                DllCall("SendMessage", "Ptr", control, "UInt", 0x100, "Ptr", 0x2D, "Ptr", 0, "Ptr")
+                    controlText := DllCall("SendMessage", "Ptr", control, "UInt", 0xC, "Ptr", 0, "Ptr", 0, "Str")
+
+        return controlText
+    }
+
+
     
 
 }
