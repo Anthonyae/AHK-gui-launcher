@@ -167,7 +167,11 @@ else if Pedersen = %A_Space%todo ; opens to do ticktick shortcuts
     gui_destroy()
     run https://ticktick.com/webapp/#settings/shortcuts
 }
-
+else if Pedersen = keyboard ; opens to do keyboard diagram
+{
+    gui_destroy()
+    run https://app.diagrams.net/#G1KO8JrjISewijqD4I2V0WsTv1p6c8QwcE
+}
 
 ;-------------------------------------------------------------------------------
 ;;; INTERACT WITH THIS AHK SCRIPT ;;;
@@ -365,5 +369,5 @@ else if Pedersen = mouse ; Get mouse position
 {   
     gui_destroy()
     MouseGetPos, LocX, LocY
-    MsgBox, X is at %Loc% and Y is at %LocY
+    MsgBox, X is at %LocX% and Y is at %LocY%
 }
