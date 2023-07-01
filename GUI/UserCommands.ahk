@@ -150,7 +150,7 @@ else if Pedersen = mind ; opens to do list in checkvist
 else if Pedersen = %A_Space%mind ; opens mindnump
 {
     gui_destroy()
-    run https://www.mindmup.com/tutorials/keyboard.html
+    run https://www.mindmup.com/tutorials/keyboard.htmlo
 }
 else if Pedersen = %A_Space%mind ; opens mindmup shortcuts
 {
@@ -171,6 +171,11 @@ else if Pedersen = keyboard ; opens to do keyboard diagram
 {
     gui_destroy()
     run https://app.diagrams.net/#G1KO8JrjISewijqD4I2V0WsTv1p6c8QwcE
+}
+else if Pedersen = repo ; opens up your github repos
+{
+    gui_destroy()o
+    run https://github.com/Anthonyae?tab=repositories
 }
 
 ;-------------------------------------------------------------------------------
@@ -317,7 +322,7 @@ else if Pedersen = rec ; Recycle Bin
     gui_destroy()
     Run ::{645FF040-5081-101B-9F08-00AA002F954E}
 }
-else if Pedersen = rep ; Folder:Reporting projects
+else if Pedersen = hbrep ; Folder:Reporting projects
 {
     gui_destroy()
     ; run, "C:\Users\anthony\Dropbox (Happiest Baby`,` Inc)\Accounting\Reporting Projects"
