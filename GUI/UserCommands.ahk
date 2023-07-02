@@ -174,8 +174,13 @@ else if Pedersen = keyboard ; opens to do keyboard diagram
 }
 else if Pedersen = repo ; opens up your github repos
 {
-    gui_destroy()o
+    gui_destroy()
     run https://github.com/Anthonyae?tab=repositories
+}
+else if Pedersen = %A_Space%git ; opens up your github repos
+{
+    gui_destroy()
+    run https://jdsalaro.com/blog/git-cheat-sheet/index.html
 }
 
 ;-------------------------------------------------------------------------------
