@@ -347,6 +347,19 @@ else if Pedersen = ping ; Ping Google
     gui_destroy()
     Run, cmd /K "ping www.google.com"
 }
+else if Pedersen = caps ; Ping Google
+{
+    gui_destroy()
+    Input, SingleKey, V L1
+    if GetKeyState("CapsLock", "T") = 1
+    {
+    SetCapsLockState, off
+    }
+    else if GetKeyState("CapsLock", "F") = 0
+    {
+    SetCapsLockState, on
+    }
+}
 else if Pedersen = hosts ; Open hosts file in Notepad
 {
     gui_destroy()
