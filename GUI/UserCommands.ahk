@@ -199,15 +199,15 @@ else if Pedersen = dir ; Open the directory for this script
 else if Pedersen = host ; Edit host script
 {
     gui_destroy()
-    codeLocation := "C:\Users\" A_UserName "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\"
-    MsgBox, %codeLocation% "%A_ScriptFullPath%"
-    run, code "%A_ScriptFullPath%"
-    
+    codeLocation := "C:\Users\" A_UserName "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\Visual Studio Code.lnk"
+    script_location:= A_ScriptFullPath
+    Run, %codeLocation% %script_location%
 }
 else if Pedersen = user ; Edit GUI user commands
 {
     gui_destroy()
-    run, notepad.exe "%A_ScriptDir%\GUI\UserCommands.ahk"
+    codeLocation := "C:\Users\" A_UserName "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\Visual Studio Code.lnk"
+    run, %codeLocation% "%A_ScriptDir%\GUI\UserCommands.ahk"
 }
 else if Pedersen = test ; Edit GUI user commands
 {
@@ -333,7 +333,7 @@ else if Pedersen = hbrep ; Folder:Reporting projects
     ; run, "C:\Users\anthony\Dropbox (Happiest Baby`,` Inc)\Accounting\Reporting Projects"
     run C:\Users\%A_Username%\Dropbox (Happiest Baby`,` Inc)\Accounting\Reporting Projects
 }
-else if Pedersen = dec ; serial trace
+else if Pedersen = hbdec ; serial trace
 {
     gui_destroy()
     run C:\Users\%A_Username%\Dropbox (Happiest Baby`,` Inc)\FloQast\FQ - Happiest Baby Inc\2022\12 - December\05 Fixed Assets\seria trace - updated as of 202306
@@ -357,7 +357,7 @@ else if Pedersen = date ; What is the date?
     gui_destroy()
     FormatTime, date,, LongDate
     MsgBox %date%
-    date =
+    date = ""
 }
 else if Pedersen = week ; Which week is it?
 {
