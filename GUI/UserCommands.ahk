@@ -277,7 +277,7 @@ if (chromeWindowsArray.MaxIndex() > 0) {
 ;-------------------------------------------------------------------------------
 ;;; TYPE RAW TEXT ;;;
 ;-------------------------------------------------------------------------------
-else if Pedersen = @ ; Email address
+else if Pedersen = @@ ; Email address
 {
     gui_destroy()
     Send, Anthony.ae@outlook.com
