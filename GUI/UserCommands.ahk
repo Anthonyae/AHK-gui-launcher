@@ -209,6 +209,18 @@ else if Pedersen = user ; Edit GUI user commands
     codeLocation := "C:\Users\" A_UserName "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\Visual Studio Code.lnk"
     run, %codeLocation% "%A_ScriptDir%\GUI\UserCommands.ahk"
 }
+else if Pedersen = lintalist ; Edit lintalist
+{
+    gui_destroy()
+    codeLocation := "C:\Users\" A_UserName "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\Visual Studio Code.lnk"
+    run, %codeLocation% "C:\Users\anthony\.personal\ahk\AHK-lintalist-master\bundles\default.txt"
+}
+else if Pedersen = hotstring ; Edit hotstrings
+{
+    gui_destroy()
+    codeLocation := "C:\Users\" A_UserName "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\Visual Studio Code.lnk"
+    run, %codeLocation% "C:\Users\anthony\.personal\ahk\hotstrings\hotstrings.ahk"
+}
 else if Pedersen = test ; Edit GUI user commands
 {
     gui_destroy()
